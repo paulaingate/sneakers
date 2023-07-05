@@ -1,6 +1,7 @@
 $text-light: #69707D;
 $text-dark: #1D2026;
 $orange: #FF7E1B;
+
 * {
     box-sizing: border-box;
 }
@@ -8,11 +9,10 @@ body {
     font-family: 'Kumbh Sans', sans-serif;
     max-width: 1110px;
     margin: 0 auto;
-    padding: 0 2em;
 }
 
 #root {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -56,6 +56,7 @@ p {
 .menu-item,
 .cart-btn,
 .avatar,
+.counter img,
 button {
     cursor: pointer;
 }
@@ -76,7 +77,7 @@ button {
 }
 
 
-.menu-item {
+.menu-item p{
     color: $text-dark;
     font-size: 1.125rem;
     font-weight: 700;
@@ -126,7 +127,6 @@ button {
     border-radius: 10px;
     background: $orange;
     box-shadow: 0px 20px 50px -20px $orange;
-    flex-grow: 1;
     border: none;
     color: white;
     font-size: 1rem;
@@ -135,6 +135,7 @@ button {
     padding: 1.125em;
     text-align: center;
 }
+
 
 button:hover {
     background-color: #FFAB6A;
@@ -146,11 +147,40 @@ button img {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(103deg) brightness(100%) contrast(114%);
 }
 
+.add-to-cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.add-to-cart-btn,
+.counter {
+    flex-grow: 1;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    background: #F6F8FD;
+    padding: 1.125em 1em;
+
+    h3 {
+        margin: 0;
+        font-size: 1rem;
+    }
+}
+
 footer {
     font-size: 0.6rem;
 }
 
 @media (max-width: 1023px) {
+    main {
+        padding: 0 2em;
+    }
+
     .menu-container {
         position: absolute;
         top: 0;
@@ -168,6 +198,9 @@ footer {
 }
 
 @media (min-width: 1024px) {
+    body {
+        padding: 0 2em;
+    }
     header {
         height: 112px;
         // margin: 0 2em;
@@ -181,7 +214,6 @@ footer {
 
     .menu-container, 
     .menu-item,
-    .add-to-cart-container,
     .product-page-container {
         display: flex;
     }
@@ -198,16 +230,21 @@ footer {
 
     .menu-item {
         align-items: center;
-        color: $text-light;
-        font-size: 0.9375rem;
-        font-weight: 400;
         border-bottom: 4px solid transparent;
         height: 100%;
+        p {
+            color: $text-light;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            
+        }
     }
     
     .menu-item:hover{
         border-color: $orange;
-        color: $text-dark;
+        p {
+            color: $text-dark;
+        }
     }
 
     
@@ -228,5 +265,13 @@ footer {
 
     .product-page-container {
     
+    }
+
+    .add-to-cart-container {
+        flex-direction: row;
+    }
+
+    .add-to-cart-btn {
+        flex-grow: 2;
     }
 }

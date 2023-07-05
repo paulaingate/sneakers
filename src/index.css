@@ -6,11 +6,10 @@ body {
   font-family: "Kumbh Sans", sans-serif;
   max-width: 1110px;
   margin: 0 auto;
-  padding: 0 2em;
 }
 
 #root {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -54,6 +53,7 @@ p {
 .menu-item,
 .cart-btn,
 .avatar,
+.counter img,
 button {
   cursor: pointer;
 }
@@ -73,7 +73,7 @@ button {
   border-radius: 50%;
 }
 
-.menu-item {
+.menu-item p {
   color: #1D2026;
   font-size: 1.125rem;
   font-weight: 700;
@@ -122,7 +122,6 @@ button {
   border-radius: 10px;
   background: #FF7E1B;
   box-shadow: 0px 20px 50px -20px #FF7E1B;
-  flex-grow: 1;
   border: none;
   color: white;
   font-size: 1rem;
@@ -142,11 +141,38 @@ button img {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(103deg) brightness(100%) contrast(114%);
 }
 
+.add-to-cart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.add-to-cart-btn,
+.counter {
+  flex-grow: 1;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: #F6F8FD;
+  padding: 1.125em 1em;
+}
+.counter h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
 footer {
   font-size: 0.6rem;
 }
 
 @media (max-width: 1023px) {
+  main {
+    padding: 0 2em;
+  }
   .menu-container {
     position: absolute;
     top: 0;
@@ -161,6 +187,9 @@ footer {
   }
 }
 @media (min-width: 1024px) {
+  body {
+    padding: 0 2em;
+  }
   header {
     height: 112px;
     padding-left: 0;
@@ -171,7 +200,6 @@ footer {
   }
   .menu-container,
   .menu-item,
-  .add-to-cart-container,
   .product-page-container {
     display: flex;
   }
@@ -186,14 +214,18 @@ footer {
   }
   .menu-item {
     align-items: center;
-    color: #69707D;
-    font-size: 0.9375rem;
-    font-weight: 400;
     border-bottom: 4px solid transparent;
     height: 100%;
   }
+  .menu-item p {
+    color: #69707D;
+    font-size: 0.9375rem;
+    font-weight: 400;
+  }
   .menu-item:hover {
     border-color: #FF7E1B;
+  }
+  .menu-item:hover p {
     color: #1D2026;
   }
   .main-logo {
@@ -207,5 +239,11 @@ footer {
   }
   .avatar {
     width: 50px;
+  }
+  .add-to-cart-container {
+    flex-direction: row;
+  }
+  .add-to-cart-btn {
+    flex-grow: 2;
   }
 }/*# sourceMappingURL=index.css.map */

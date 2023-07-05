@@ -5,11 +5,18 @@ import Footer from './Footer'
 
 export default function App() {
   const [cart, setCart] = useState([])
+  console.log(cart)
+
+  function addToCart(newProduct) {
+    if (!cart.find(product => product.id === newProduct.id)) {
+      setCart(prev => [...prev, newProduct])
+    }
+  }
 
   return (
     <>
       <Header cart={cart}/>
-      <Product setCart={setCart} />
+      <Product addToCart={addToCart} />
       <Footer />
     </>
   )
