@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Header from './Header'
 import Product from './Product'
+import Footer from './Footer'
 
 export default function App() {
   const [cart, setCart] = useState([])
@@ -9,6 +10,7 @@ export default function App() {
     <>
       <Header cart={cart}/>
       <Product setCart={setCart} />
+      <Footer />
     </>
   )
 }
