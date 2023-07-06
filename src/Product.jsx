@@ -6,7 +6,7 @@ import Lightbox from "./Lightbox";
 
 export default function Product({ addToCart }) {
   const [productQuantity, setProductQuantity] = useState(0)
-  const [lightboxOpen, setLightboxOpen] = useState(true)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   const productData = {
     id: 1,
@@ -31,7 +31,11 @@ export default function Product({ addToCart }) {
   }
 
   function addProductToCart() {
+    if (productQuantity === 0) {
+      return
+    }
     addToCart({
+      id: productData.id,
       name: productData.name,
       price: productData.fullPrice * productData.discount,
       quantity: productQuantity,
