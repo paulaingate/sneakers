@@ -9,6 +9,8 @@ export default function Header({cart}) {
   const [showMenu, setShowMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
+  const cartItemCount = cart.reduce((total, item) => {return total + item.quantity}, 0)
+
   return (
     <header>
       <img
@@ -21,7 +23,10 @@ export default function Header({cart}) {
 
       <Menu open={showMenu} closeMenu={() => setShowMenu(false)} />
 
-      <img className="cart-btn" src={cartIcon} alt="cart icon" />
+      <div className="cart-btn-container">
+        <img className={`cart-btn ${showCart && 'open'}`} src={cartIcon} alt="cart icon" />
+        {cartItemCount > 0 && <span className="cart-item-count">{cartItemCount}</span>}
+      </div>
 
       <img className="avatar" src={avatar} alt="profile avatar" />
     </header>

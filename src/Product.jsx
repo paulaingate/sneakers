@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import cartIcon from "./images/icon-cart.svg";
 import Counter from "./Counter";
+import ProductImage from "./ProductImage";
 
 export default function Product({ addToCart }) {
   const [productQuantity, setProductQuantity] = useState(0)
@@ -14,16 +15,16 @@ export default function Product({ addToCart }) {
     fullPrice: 250,
     discount: 0.5,
     images: [
-      './images/image-product-1.jpg',
-      './images/image-product-2.jpg',
-      './images/image-product-3.jpg',
-      './images/image-product-4.jpg'
+      './image-product-1.jpg',
+      './image-product-2.jpg',
+      './image-product-3.jpg',
+      './image-product-4.jpg'
     ],
     thumbnails: [
-      './images/image-product-1-thumbnail.jpg',
-      './images/image-product-2-thumbnail.jpg',
-      './images/image-product-3-thumbnail.jpg',
-      './images/image-product-4-thumbnail.jpg'
+      './image-product-1-thumbnail.jpg',
+      './image-product-2-thumbnail.jpg',
+      './image-product-3-thumbnail.jpg',
+      './image-product-4-thumbnail.jpg'
     ]
   }
 
@@ -39,7 +40,7 @@ export default function Product({ addToCart }) {
 
   return (
     <main className="product-page-container">
-      {/* img component here */}
+      <ProductImage images={productData.images} thumbnails={productData.thumbnails}/>
       <div className="product-details">
         <div>
           <h4>Sneaker Company</h4>
@@ -49,9 +50,11 @@ export default function Product({ addToCart }) {
           </p>
         </div>
 
-        <span className="price">${Number(productData.fullPrice * productData.discount).toFixed(2)}</span>
-        <span className="discount">{productData.discount * 100}%</span>
-        <p className="old-price">${Number(productData.fullPrice).toFixed(2)}</p>
+        <div className="price-info-container">
+          <span className="price">${Number(productData.fullPrice * productData.discount).toFixed(2)}</span>
+          <span className="discount">{productData.discount * 100}%</span>
+          <p className="old-price">${Number(productData.fullPrice).toFixed(2)}</p>
+        </div>
 
         <div className="add-to-cart-container">
           <Counter 

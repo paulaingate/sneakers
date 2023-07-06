@@ -62,9 +62,17 @@ button {
 }
 
 .cart-btn {
-    margin-left: auto;
     margin-right: 1.375em;
     color: $text-light;
+}
+
+.cart-btn:hover, .cart-btn.open {
+    filter: brightness(0) saturate(100%) invert(4%) sepia(4%) saturate(6675%) hue-rotate(182deg) brightness(101%) contrast(82%);
+}
+
+.cart-btn-container {
+    position: relative;
+    margin-left: auto;
 }
 
 .avatar {
@@ -92,10 +100,11 @@ button {
     background-color: black;
     opacity: 0.75;
     width: 100vw;
-    height: 100vh;
-    position: absolute;
+    min-height: 100vh;
+    position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
 }
 
 .price {
@@ -112,6 +121,7 @@ button {
     padding: 0.25em 0.5em;
     font-weight: 700;
     margin-left: 1em;
+    margin-right: auto;
 }
 
 .old-price {
@@ -120,6 +130,7 @@ button {
     line-height: 26px;
     text-decoration-line: line-through;
     margin-top: 0.625em;
+    display: inline-block;
 }
 
 
@@ -170,40 +181,105 @@ button img {
         margin: 0;
         font-size: 1rem;
     }
+
+    img {
+        user-drag: none;  
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    img:hover {
+        opacity: 0.7;
+    }
+}
+
+.cart-item-count {
+    position: absolute;
+    top: -6px;
+    left: 9px;
+    background-color: $orange;
+    color: white;
+    font-weight: 700;
+    font-size: 0.625rem;
+    border-radius: 0.65em;
+    width: 1.9em;
+    height: 1.3em;
+    text-align: center;
+}
+
+.product-page-container {
+    width: 100vw;
+    padding: 0;
+}
+
+.product-details {
+    padding: 1.5em;
+}
+
+.img-large {
+    width: 100%;
+    display: block;
 }
 
 footer {
     font-size: 0.6rem;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 974px) {
     main {
         padding: 0 2em;
     }
 
     .menu-container {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         min-height: 100vh;
         width: 250px;
         background-color: white;
         padding: 1.56em;
+        z-index: 2;
     }
 
     .hidden {
         display: none;
     }
 
+    .thumbnail {
+        display: none;
+    }
+
+    .img-large {
+        height: 80vw;
+        object-fit: cover;
+    }
+
+    .price-info-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .old-price {
+        align-self: flex-end;
+    }
+
+    .product-details {
+        max-width: 650px;
+        margin: auto;
+    }
+
 }
 
-@media (min-width: 1024px) {
-    body {
+@media (min-width: 975px) {
+    html {
         padding: 0 2em;
     }
     header {
         height: 112px;
-        // margin: 0 2em;
+        // margin-top: 1.625em;
         padding-left: 0;
         padding-right: 0;
     }
@@ -255,16 +331,63 @@ footer {
     .cart-btn {
         margin-right: 2.875em;
     }
-    .cart-btn:hover {
-        filter: brightness(0) saturate(100%) invert(4%) sepia(4%) saturate(6675%) hue-rotate(182deg) brightness(101%) contrast(82%);
-    }
 
     .avatar {
         width: 50px;
     }
 
     .product-page-container {
-    
+        padding: 1.5em 48px;
+        // gap: 125px;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .product-details, .product-images {
+        flex-grow: 1;
+        max-width: 445px;
+    }
+
+    .product-details {
+        margin-left: 1.5em;
+    }
+
+    .product-images {
+        margin-right: 1.5em;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2em;
+    }
+
+    .img-large {
+        width: 100%;
+        border-radius: 15px;
+        grid-column: 1/-1;
+    }
+
+    .thumbnail img {
+        width: 100%;
+        display: block;
+    }
+
+    .thumbnail:hover {
+        opacity: 0.5;
+    }
+
+    .thumbnail.selected:hover {
+        opacity: 1;
+    }
+
+    .thumbnail img, .thumbnail.selected {
+        border-radius: 10px;
+    }
+
+    .thumbnail.selected {
+        outline: 2px solid $orange;
+        img {
+            opacity: 0.4;
+        }
     }
 
     .add-to-cart-container {
@@ -273,5 +396,9 @@ footer {
 
     .add-to-cart-btn {
         flex-grow: 2;
+    }
+
+    .old-price {
+        display: block;
     }
 }
