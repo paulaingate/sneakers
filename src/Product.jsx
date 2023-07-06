@@ -2,9 +2,11 @@ import React, {useState} from "react";
 import cartIcon from "./images/icon-cart.svg";
 import Counter from "./Counter";
 import ProductImage from "./ProductImage";
+import Lightbox from "./Lightbox";
 
 export default function Product({ addToCart }) {
   const [productQuantity, setProductQuantity] = useState(0)
+  const [lightboxOpen, setLightboxOpen] = useState(true)
 
   const productData = {
     id: 1,
@@ -40,7 +42,7 @@ export default function Product({ addToCart }) {
 
   return (
     <main className="product-page-container">
-      <ProductImage images={productData.images} thumbnails={productData.thumbnails}/>
+      <ProductImage setLightboxOpen={setLightboxOpen} images={productData.images} thumbnails={productData.thumbnails}/>
       <div className="product-details">
         <div>
           <h4>Sneaker Company</h4>
@@ -68,6 +70,7 @@ export default function Product({ addToCart }) {
         </div>
 
       </div>
+      <Lightbox open={lightboxOpen} setOpen={setLightboxOpen} images={productData.images} thumbnails={productData.thumbnails}/>
     </main>
   );
 }
