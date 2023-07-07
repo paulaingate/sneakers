@@ -329,6 +329,10 @@ img {
   margin-left: 0.5em;
 }
 
+.checkout-btn {
+  box-shadow: none;
+}
+
 footer p {
   font-size: 0.6rem;
 }

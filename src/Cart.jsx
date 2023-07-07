@@ -20,7 +20,7 @@ export default function Cart({ cart, removeItem }) {
       <h3>Cart</h3>
       <div className="cart-content">
         {cart.length > 0 ? cartItems : <p className="cart-empty">Your cart is empty.</p>}
-        {cart.length > 0 && <button>Checkout</button>}
+        {cart.length > 0 && <button className="checkout-btn">Checkout</button>}
       </div>
     </div>
   );
