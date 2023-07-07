@@ -31,7 +31,7 @@ header {
 
 h1 {
     color: $text-dark;
-    font-size: 2.75rem;
+    font-size: 1.75rem;
     line-height: 48px;
     margin-top: 0.6em;
     margin-bottom: 0.7em;
@@ -43,7 +43,7 @@ h1, h4 {
 
 h4 {
     color: $orange;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
@@ -51,7 +51,8 @@ h4 {
 p {
     color: $text-light;
     font-weight: 400;
-    line-height: 26px;
+    line-height: 25px;
+    font-size: 15px;
 }
 
 .menu-item,
@@ -296,6 +297,7 @@ img {
     background: #FFF;
     box-shadow: 0px 20px 50px -20px rgba(29, 32, 38, 0.50);
     width: 360px;
+    max-width: 95%;
     z-index: 2;
     color: $text-light;
 
@@ -354,7 +356,7 @@ img {
 
 
 
-footer {
+footer p{
     font-size: 0.6rem;
 }
 
@@ -416,9 +418,21 @@ footer {
     }
     header {
         height: 112px;
-        // margin-top: 1.625em;
         padding-left: 0;
         padding-right: 0;
+    }
+
+    h1 {
+        font-size: 2.75rem;
+    }
+
+    h4 {
+        font-size: 0.8125rem;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 26px;
     }
 
     header .overlay {
@@ -479,7 +493,6 @@ footer {
 
     .product-page-container {
         padding: 1.5em 48px;
-        // gap: 125px;
         width: 100%;
         justify-content: space-between;
         align-items: center;
